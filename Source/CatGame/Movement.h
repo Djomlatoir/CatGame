@@ -19,11 +19,22 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	// Tracks the number of jumps performed
+	int JumpCount;
+
+	// Maximum number of jumps allowed (1 = regular jump, 2 = double jump)
+	int MaxJumps;
+
+	// Handles the double jump logic
+	void DoubleJump();
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	// Override the Jump function
+	virtual void Landed(const FHitResult& Hit) override;
 
 };
